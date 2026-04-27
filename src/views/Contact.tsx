@@ -20,6 +20,11 @@ function Contact() {
       href: `mailto:${contactInfo.email}`,
     },
     { label: "Adress", value: contactInfo.address },
+    {
+      label: "Instagram",
+      value: contactInfo.instagramHandle,
+      href: contactInfo.instagramUrl,
+    },
   ];
 
   return (

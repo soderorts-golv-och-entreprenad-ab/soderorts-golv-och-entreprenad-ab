@@ -21,4 +21,6 @@ export interface ContactInfo {
   phone: string;
   email: string;
   address: string;
+  instagramHandle: string;
+  instagramUrl: string;
 }

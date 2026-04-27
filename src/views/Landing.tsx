@@ -15,8 +15,8 @@ function Landing() {
       <main>
         <Hero />
         <About />
-        <Team />
         <Projects />
+        <Team />
         <Contact />
       </main>
       <Footer />

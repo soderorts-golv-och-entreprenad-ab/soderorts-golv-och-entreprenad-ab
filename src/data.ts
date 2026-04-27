@@ -76,4 +76,6 @@ export const contactInfo: ContactInfo = {
   phone: "+46 8 123 45 67",
   email: "info@soderortsgolv.se",
   address: "Storgatan 12, 123 45 Stockholm",
+  instagramHandle: "@soderortsgolv",
+  instagramUrl: "https://instagram.com/soderortsgolv",
 };
