@@ -1,16 +1,16 @@
-import ProjectCard from "../components/ProjectCard";
-import Section from "../components/Section";
+import ProjectsCarousel from "../components/ProjectsCarousel";
 import { projects } from "../data";
 
 function Projects() {
   return (
-    <Section id="projekt" title="Våra projekt">
-      <div className="grid grid--projects">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
-        ))}
+    <section id="projekt" className="sg-band sg-band--paper sg-projects">
+      <div className="sg-band__inner">
+        <h2 className="sg-section-head sg-section-head--center sg-section-head--ink">
+          Projekt
+        </h2>
+        <ProjectsCarousel projects={projects} />
       </div>
-    </Section>
+    </section>
   );
 }
 
