@@ -3,6 +3,7 @@ import type {
   ContactInfo,
   HeroContent,
   NavLink,
+  OpeningHour,
   Project,
   TeamMember,
 } from "./types";
@@ -147,9 +148,21 @@ export const projects: Project[] = [
 ];
 
 export const contactInfo: ContactInfo = {
+  heading: "Redo att starta en konversation?",
+  intro:
+    "Hör av dig så återkommer vi inom ett dygn med en första bedömning av ditt projekt — utan kostnad eller åtaganden.",
   phone: "+46 8 123 45 67",
   email: "info@soderortsgolv.se",
   address: "Storgatan 12, 123 45 Stockholm",
-  instagramHandle: "@soderortsgolv",
-  instagramUrl: "https://instagram.com/soderortsgolv",
 };
+
+export const companyBlurb =
+  "Hantverk i golv och bygg sedan 2009. Vi bygger trygga, vackra och hållbara miljöer åt privatpersoner och fastighetsägare i Stockholm.";
+
+export const orgNumber = "556123-4567";
+
+export const openingHours: OpeningHour[] = [
+  { days: "Mån–Fre", hours: "07:00 – 17:00" },
+  { days: "Lör", hours: "efter överenskommelse" },
+  { days: "Sön", hours: "stängt" },
+];

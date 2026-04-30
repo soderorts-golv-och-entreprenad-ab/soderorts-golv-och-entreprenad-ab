@@ -1,49 +1,46 @@
-import Section from "../components/Section";
 import { contactInfo } from "../data";
 
-interface ContactItem {
-  label: string;
-  value: string;
-  href?: string;
-}
+const telHref = `tel:${contactInfo.phone.replace(/\s/g, "")}`;
+const mailHref = `mailto:${contactInfo.email}`;
 
 function Contact() {
-  const items: ContactItem[] = [
-    {
-      label: "Telefon",
-      value: contactInfo.phone,
-      href: `tel:${contactInfo.phone.replace(/\s/g, "")}`,
-    },
-    {
-      label: "E-post",
-      value: contactInfo.email,
-      href: `mailto:${contactInfo.email}`,
-    },
-    { label: "Adress", value: contactInfo.address },
-    {
-      label: "Instagram",
-      value: contactInfo.instagramHandle,
-      href: contactInfo.instagramUrl,
-    },
-  ];
-
   return (
-    <Section id="kontakt" title="Kontakt" variant="muted">
-      <ul className="contact-list">
-        {items.map((item) => (
-          <li key={item.label} className="contact-list__item">
-            <span className="contact-list__label">{item.label}</span>
-            {item.href ? (
-              <a href={item.href} className="contact-list__value">
-                {item.value}
-              </a>
-            ) : (
-              <span className="contact-list__value">{item.value}</span>
-            )}
+    <section id="kontakt" className="sg-band sg-band--navy sg-contact">
+      <div className="sg-band__inner sg-contact__inner">
+        <div className="sg-contact__intro">
+          <span className="sg-eyebrow sg-eyebrow--light">Kontakt</span>
+          <h2 className="sg-section-head">{contactInfo.heading}</h2>
+          <p className="sg-contact__copy">{contactInfo.intro}</p>
+          <div className="sg-contact__ctas">
+            <a className="sg-btn sg-btn--filled-ochre" href={telHref}>
+              Ring oss
+            </a>
+            <a className="sg-btn sg-btn--outline-light" href={mailHref}>
+              Skicka e-post
+            </a>
+          </div>
+        </div>
+
+        <ul className="sg-contact__list">
+          <li className="sg-contact__row">
+            <span className="sg-contact__label">Telefon</span>
+            <a className="sg-contact__value" href={telHref}>
+              {contactInfo.phone}
+            </a>
           </li>
-        ))}
-      </ul>
-    </Section>
+          <li className="sg-contact__row">
+            <span className="sg-contact__label">E-post</span>
+            <a className="sg-contact__value" href={mailHref}>
+              {contactInfo.email}
+            </a>
+          </li>
+          <li className="sg-contact__row">
+            <span className="sg-contact__label">Adress</span>
+            <span className="sg-contact__value">{contactInfo.address}</span>
+          </li>
+        </ul>
+      </div>
+    </section>
   );
 }
 
