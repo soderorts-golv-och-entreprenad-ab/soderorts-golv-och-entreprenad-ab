@@ -10,7 +10,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family:
+    "Manrope",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
     sans-serif;
   color: #02092c;
   background: #ffffff;

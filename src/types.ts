@@ -39,13 +39,10 @@ export interface Project {
 
 export interface ContactInfo {
   heading: string;
-  intro: string;
+  sub: string;
   phone: string;
   email: string;
   address: string;
-}
-
-export interface OpeningHour {
-  days: string;
-  hours: string;
+  instagramHandle: string;
+  instagramUrl: string;
 }

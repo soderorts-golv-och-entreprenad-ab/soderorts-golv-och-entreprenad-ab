@@ -5,7 +5,6 @@ import {
   companyName,
   companyShortName,
   contactInfo,
-  openingHours,
   orgNumber,
 } from "../data";
 
@@ -60,16 +59,6 @@ function Footer() {
           </ul>
         </div>
 
-        <div className="sg-footer__col">
-          <h4 className="sg-footer__heading">Öppettider</h4>
-          <ul className="sg-footer__list">
-            {openingHours.map((row) => (
-              <li key={row.days}>
-                {row.days} · {row.hours}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
 
       <div className="sg-footer__bar">

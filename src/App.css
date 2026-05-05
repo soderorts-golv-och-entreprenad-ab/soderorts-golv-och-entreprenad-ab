@@ -12,13 +12,12 @@
   --sg-on-dark: #ffffff;
   --sg-on-dark-mute: rgba(255, 255, 255, 0.78);
   --sg-accent: #9ccfeb;
-  --sg-accent-deep: #2f7aa8;
   --sg-ochre: var(--sg-accent);
 
   --sg-font-display: "Playfair Display", Georgia, serif;
   --sg-font-head: "Oswald", "Helvetica Neue", Arial, sans-serif;
-  --sg-font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  --sg-font-body:
+    "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --sg-font-cta: "Roboto Slab", "Manrope", Georgia, serif;
 
   --sg-content: 1280px;
@@ -26,7 +25,7 @@
   --sg-section-y: clamp(64px, 9vw, 128px);
   --sg-nav-height: 80px;
 
-  --sg-fs-section: clamp(2rem, 4vw, 3.75rem);
+  --sg-fs-section: clamp(1.625rem, 2.6vw, 2.25rem);
   --sg-tracking-section: 0.04em;
 
   --sg-line: #ddd7cd;
@@ -63,7 +62,8 @@ section[id] {
     rgba(2, 9, 44, 0.65) 0%,
     rgba(2, 9, 44, 0) 100%
   );
-  transition: background-color var(--sg-dur) var(--sg-ease),
+  transition:
+    background-color var(--sg-dur) var(--sg-ease),
     backdrop-filter var(--sg-dur) var(--sg-ease);
 }
 
@@ -139,7 +139,8 @@ section[id] {
   border: 2px solid currentColor;
   border-radius: 0;
   white-space: nowrap;
-  transition: background-color var(--sg-dur-fast) var(--sg-ease),
+  transition:
+    background-color var(--sg-dur-fast) var(--sg-ease),
     color var(--sg-dur-fast) var(--sg-ease);
 }
 
@@ -198,11 +199,7 @@ section[id] {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(
-      180deg,
-      rgba(2, 9, 44, 0) 40%,
-      rgba(2, 9, 44, 0.55) 100%
-    ),
+    linear-gradient(180deg, rgba(2, 9, 44, 0) 40%, rgba(2, 9, 44, 0.55) 100%),
     linear-gradient(
       100deg,
       rgba(2, 9, 44, 0.85) 0%,
@@ -258,9 +255,14 @@ section[id] {
 }
 
 /* ─── BANDS (full-bleed sections) ───────────────────────────── */
+/* Body sections (About, Projects, Team, Kontakt) get wider page-edge
+   breathing room and a narrower content rail than the nav / hero / footer.
+   Redeclaring --sg-content here scopes the narrower rail to band descendants
+   only — the root token (1280px) still applies to nav, hero, and footer. */
 .sg-band {
   width: 100%;
-  padding: var(--sg-section-y) var(--sg-gutter);
+  padding: var(--sg-section-y) clamp(40px, 7vw, 128px);
+  --sg-content: 1180px;
 }
 
 .sg-band--paper {
@@ -321,7 +323,7 @@ section[id] {
 
 .sg-about__quote {
   font-family: var(--sg-font-display);
-  font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
   font-style: italic;
   font-weight: 500;
   line-height: 1.3;
@@ -331,7 +333,7 @@ section[id] {
 
 .sg-about__paragraphs {
   font-family: var(--sg-font-body);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.65;
   color: var(--sg-ink-soft);
 }
@@ -409,7 +411,8 @@ section[id] {
   border: 1px solid var(--sg-line);
   display: flex;
   flex-direction: column;
-  transition: transform var(--sg-dur-fast) var(--sg-ease),
+  transition:
+    transform var(--sg-dur-fast) var(--sg-ease),
     box-shadow var(--sg-dur-fast) var(--sg-ease),
     border-color var(--sg-dur-fast) var(--sg-ease);
 }
@@ -437,7 +440,7 @@ section[id] {
 
 .sg-project__meta {
   font-family: var(--sg-font-body);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--sg-ink-mute);
@@ -445,14 +448,15 @@ section[id] {
 
 .sg-project__title {
   font-family: var(--sg-font-display);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   color: var(--sg-ink);
 }
 
 .sg-project__desc {
   font-family: var(--sg-font-body);
-  font-size: 1.0625rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   color: var(--sg-ink-soft);
 }
 
@@ -492,7 +496,7 @@ section[id] {
 
 .sg-teammate__name {
   font-family: var(--sg-font-display);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.2;
   margin-bottom: 4px;
@@ -680,96 +684,212 @@ section[id] {
   }
 }
 
-/* ─── EYEBROW ───────────────────────────────────────────────── */
-.sg-eyebrow {
-  display: inline-block;
-  font-family: var(--sg-font-body);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+/* ─── KONTAKT ───────────────────────────────────────────────── */
+.sg-kontakt__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 7vw, 96px);
+}
+
+.sg-kontakt__head {
+  max-width: 880px;
+}
+
+.sg-kontakt__title {
+  font-family: var(--sg-font-head);
+  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--sg-accent-deep);
+  color: var(--sg-on-dark);
+  margin: 0 0 var(--sg-space-3);
 }
 
-.sg-eyebrow--light {
-  color: var(--sg-accent);
+.sg-kontakt__sub {
+  font-family: var(--sg-font-body);
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  line-height: 1.3;
+  color: var(--sg-on-dark);
+  margin: 0;
+  max-width: 720px;
 }
 
-/* ─── CONTACT ───────────────────────────────────────────────── */
-.sg-contact__inner {
+.sg-kontakt__split {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: var(--sg-space-7);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(48px, 6vw, 96px);
+  align-items: start;
 }
 
-.sg-contact__intro {
+/* ── Form ────────────────────────────────────────────────── */
+.sg-kontakt__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sg-space-3);
   max-width: 640px;
 }
 
-.sg-contact__intro .sg-section-head {
-  font-size: clamp(2rem, 3.4vw, 2.75rem);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  margin-top: 12px;
+.sg-kontakt__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
-.sg-contact__copy {
-  font-family: var(--sg-font-body);
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: var(--sg-on-dark-mute);
-  margin: var(--sg-space-4) 0 var(--sg-space-5);
-  max-width: 520px;
-}
-
-.sg-contact__ctas {
+.sg-kontakt__field {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--sg-space-3);
-}
-
-.sg-contact__ctas .sg-btn {
-  font-size: 1.125rem;
-  padding: 12px 26px;
-}
-
-.sg-contact__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--sg-space-5);
-}
-
-.sg-contact__row {
-  display: grid;
+  flex-direction: column;
   gap: 6px;
 }
 
-.sg-contact__label {
+.sg-kontakt__field label {
   font-family: var(--sg-font-body);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--sg-on-dark-mute);
+  color: rgba(255, 255, 255, 0.72);
 }
 
-.sg-contact__value {
-  font-family: var(--sg-font-display);
+.sg-kontakt__field input,
+.sg-kontakt__field textarea {
+  font: inherit;
+  font-family: var(--sg-font-body);
+  font-size: 1rem;
+  color: var(--sg-on-dark);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  padding: 12px 14px;
+  width: 100%;
+  transition:
+    border-color var(--sg-dur-fast) var(--sg-ease),
+    background-color var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-kontakt__field input::placeholder,
+.sg-kontakt__field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.sg-kontakt__field textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+.sg-kontakt__field input:focus,
+.sg-kontakt__field textarea:focus {
+  outline: none;
+  border-color: var(--sg-accent);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sg-kontakt__submit {
+  align-self: flex-start;
+  margin-top: var(--sg-space-3);
+  padding: 14px 36px;
+  letter-spacing: 0.04em;
+}
+
+.sg-kontakt__form--sent {
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 240px;
+  padding: 32px 0;
+}
+
+.sg-kontakt__sent-eyebrow {
+  font-family: var(--sg-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sg-accent);
+  margin: 0;
+}
+
+.sg-kontakt__sent-msg {
+  font-family: var(--sg-font-head);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--sg-on-dark);
+  margin: 8px 0 0;
+}
+
+/* ── Info aside ──────────────────────────────────────────── */
+.sg-kontakt__info {
+  font-family: var(--sg-font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--sg-on-dark);
+}
+
+.sg-kontakt__info-head {
+  font-family: var(--sg-font-head);
   font-size: 1.5rem;
   font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sg-on-dark);
+  margin: 0 0 16px;
+}
+
+.sg-kontakt__info-head--social {
+  margin-top: 32px;
+}
+
+.sg-kontakt__info-block {
+  margin: 0 0 18px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: pre-line;
+}
+
+.sg-kontakt__info-hours {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.sg-kontakt__info-link {
+  color: var(--sg-on-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+  transition:
+    border-color var(--sg-dur-fast) var(--sg-ease),
+    color var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-kontakt__info-link:hover {
+  color: var(--sg-accent);
+  border-bottom-color: var(--sg-accent);
+}
+
+.sg-kontakt__social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.sg-kontakt__social a {
+  font-family: var(--sg-font-body);
+  font-weight: 600;
+  font-size: 1rem;
   color: var(--sg-on-dark);
   transition: color var(--sg-dur-fast) var(--sg-ease);
 }
 
-a.sg-contact__value:hover {
-  color: var(--sg-ochre);
+.sg-kontakt__social a:hover {
+  color: var(--sg-accent);
 }
 
-@media (max-width: 900px) {
-  .sg-contact__inner {
+@media (max-width: 960px) {
+  .sg-kontakt__split {
+    grid-template-columns: 1fr;
+  }
+  .sg-kontakt__form-row {
     grid-template-columns: 1fr;
   }
 }
@@ -785,7 +905,7 @@ a.sg-contact__value:hover {
   margin: 0 auto;
   padding: var(--sg-space-7) var(--sg-gutter) var(--sg-space-6);
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1.2fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1.2fr;
   gap: var(--sg-space-6);
 }
 
@@ -836,11 +956,11 @@ a.sg-contact__value:hover {
 
 .sg-footer__heading {
   font-family: var(--sg-font-body);
-  font-size: 0.8125rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--sg-ochre);
+  color: var(--sg-on-dark);
   margin: 0 0 var(--sg-space-3);
 }
 
