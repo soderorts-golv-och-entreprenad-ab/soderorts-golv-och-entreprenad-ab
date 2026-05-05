@@ -148,11 +148,11 @@ export const projects: Project[] = [
 
 export const contactInfo: ContactInfo = {
   heading: "Redo att starta en konversation?",
-  sub: "Kontakta oss via mail så svarar vi inom ett dygn.",
+  sub: "Kontakta oss via mail så svarar vi så fort vi kan.",
   phone: "+46 8 123 45 67",
   email: "info@soderortsgolv.se",
   address: "Storgatan 12, 123 45 Stockholm",
-  instagramHandle: "@soderortsgolv",
+  instagramHandle: "soderortsgolv",
   instagramUrl: "https://instagram.com/soderortsgolv",
 };
 

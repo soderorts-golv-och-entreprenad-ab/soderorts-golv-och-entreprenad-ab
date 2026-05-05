@@ -1,151 +1,129 @@
-import { useState, type FormEvent } from "react";
+import type { ReactNode } from "react";
 import { contactInfo } from "../data";
 
 const telHref = `tel:${contactInfo.phone.replace(/\s/g, "")}`;
 const mailHref = `mailto:${contactInfo.email}`;
 
-function ContactForm() {
-  const [sent, setSent] = useState(false);
+const iconProps = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  "aria-hidden": true,
+} as const;
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSent(true);
-  }
-
-  if (sent) {
-    return (
-      <div className="sg-kontakt__form sg-kontakt__form--sent">
-        <p className="sg-kontakt__sent-eyebrow">Tack —</p>
-        <p className="sg-kontakt__sent-msg">vi hör av oss inom ett dygn.</p>
-      </div>
-    );
-  }
-
+function EmailIcon() {
   return (
-    <form className="sg-kontakt__form" onSubmit={handleSubmit} noValidate>
-      <div className="sg-kontakt__form-row">
-        <div className="sg-kontakt__field">
-          <label htmlFor="kf-first">Förnamn</label>
-          <input
-            id="kf-first"
-            name="first"
-            type="text"
-            autoComplete="given-name"
-            placeholder="Förnamn"
-            required
-          />
-        </div>
-        <div className="sg-kontakt__field">
-          <label htmlFor="kf-last">Efternamn</label>
-          <input
-            id="kf-last"
-            name="last"
-            type="text"
-            autoComplete="family-name"
-            placeholder="Efternamn"
-            required
-          />
-        </div>
-      </div>
-      <div className="sg-kontakt__form-row">
-        <div className="sg-kontakt__field">
-          <label htmlFor="kf-email">E-post</label>
-          <input
-            id="kf-email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            placeholder="namn@exempel.se"
-            required
-          />
-        </div>
-        <div className="sg-kontakt__field">
-          <label htmlFor="kf-phone">Telefon</label>
-          <input
-            id="kf-phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            placeholder="+46 …"
-          />
-        </div>
-      </div>
-      <div className="sg-kontakt__field">
-        <label htmlFor="kf-msg">Meddelande</label>
-        <textarea
-          id="kf-msg"
-          name="message"
-          rows={6}
-          placeholder="Berätta kort om ditt projekt…"
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        className="sg-btn sg-btn--filled-ochre sg-kontakt__submit"
-      >
-        Skicka
-      </button>
-    </form>
+    <svg {...iconProps}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M5 4.5h3.5l1.6 4-2.1 1.4a12 12 0 0 0 6.1 6.1l1.4-2.1 4 1.6V19a1.5 1.5 0 0 1-1.5 1.5C10.7 20 4 13.3 4 5.9A1.5 1.5 0 0 1 5 4.5z" />
+    </svg>
+  );
+}
+
+function AddressIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z" />
+      <circle cx="12" cy="9" r="2.5" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+interface RowProps {
+  icon: ReactNode;
+  prefix: string;
+  value: string;
+  href?: string;
+}
+
+function Row({ icon, prefix, value, href }: RowProps) {
+  const text = (
+    <span className="sg-kontakt__row-text">
+      <span className="sg-kontakt__row-prefix">{prefix}</span>{" "}
+      <span className="sg-kontakt__row-value">{value}</span>
+    </span>
+  );
+  return (
+    <li className="sg-kontakt__row">
+      <span className="sg-kontakt__row-icon" aria-hidden="true">
+        {icon}
+      </span>
+      {href ? (
+        <a className="sg-kontakt__row-link" href={href}>
+          {text}
+        </a>
+      ) : (
+        text
+      )}
+    </li>
   );
 }
 
 function Contact() {
   return (
-    <section
-      id="kontakt"
-      className="sg-band sg-band--navy sg-kontakt sg-kontakt--with-form"
-    >
+    <section id="kontakt" className="sg-band sg-band--navy sg-kontakt">
       <div className="sg-band__inner sg-kontakt__inner">
         <header className="sg-kontakt__head">
-          <h2 className="sg-section-head sg-kontakt__title">
-            {contactInfo.heading}
-          </h2>
+          <h2 className="sg-kontakt__title">{contactInfo.heading}</h2>
           <p className="sg-kontakt__sub">{contactInfo.sub}</p>
         </header>
 
-        <div className="sg-kontakt__split">
-          <div className="sg-kontakt__split-form">
-            <ContactForm />
+        <div className="sg-kontakt__cols">
+          <div className="sg-kontakt__col">
+            <h3 className="sg-kontakt__col-head">Kontakt</h3>
+            <ul className="sg-kontakt__list">
+              <Row
+                icon={<EmailIcon />}
+                prefix="Maila oss:"
+                value={contactInfo.email}
+                href={mailHref}
+              />
+              <Row
+                icon={<PhoneIcon />}
+                prefix="Ring oss:"
+                value={contactInfo.phone}
+                href={telHref}
+              />
+              <Row
+                icon={<AddressIcon />}
+                prefix="Besök oss:"
+                value={contactInfo.address}
+              />
+            </ul>
           </div>
 
-          <aside className="sg-kontakt__info">
-            <h3 className="sg-kontakt__info-head">Kontaktinformation</h3>
-            <address className="sg-kontakt__info-block">
-              {contactInfo.address}
-            </address>
-            <p className="sg-kontakt__info-block">
-              Ring oss:{" "}
-              <a className="sg-kontakt__info-link" href={telHref}>
-                {contactInfo.phone}
-              </a>
-            </p>
-            <p className="sg-kontakt__info-block">
-              <a className="sg-kontakt__info-link" href={mailHref}>
-                {contactInfo.email}
-              </a>
-            </p>
-            <p className="sg-kontakt__info-block sg-kontakt__info-hours">
-              Vi har öppet måndag – fredag
-              <br />
-              07:00 – 17:00
-            </p>
-
-            <h3 className="sg-kontakt__info-head sg-kontakt__info-head--social">
-              Följ oss
-            </h3>
-            <ul className="sg-kontakt__social">
-              <li>
-                <a
-                  href={contactInfo.instagramUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Instagram
-                </a>
-              </li>
+          <div className="sg-kontakt__col">
+            <h3 className="sg-kontakt__col-head">Följ oss</h3>
+            <ul className="sg-kontakt__list">
+              <Row
+                icon={<InstagramIcon />}
+                prefix="Vår instagram:"
+                value={contactInfo.instagramHandle}
+                href={contactInfo.instagramUrl}
+              />
             </ul>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
