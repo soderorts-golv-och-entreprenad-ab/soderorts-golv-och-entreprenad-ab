@@ -4,6 +4,8 @@ import type {
   HeroContent,
   NavLink,
   Project,
+  ServicesContent,
+  TeamContent,
   TeamMember,
 } from "./types";
 
@@ -13,8 +15,9 @@ export const brandMonogram = "SG";
 
 export const navLinks: NavLink[] = [
   { label: "Hem", href: "#hem" },
-  { label: "Om oss", href: "#om-oss" },
+  { label: "Tjänster", href: "#tjanster" },
   { label: "Projekt", href: "#projekt" },
+  { label: "Om oss", href: "#om-oss" },
   { label: "Vårt team", href: "#vart-team" },
 ];
 
@@ -26,6 +29,8 @@ export const heroContent: HeroContent = {
 };
 
 export const aboutContent: AboutContent = {
+  eyebrow: "Om oss",
+  headline: "Vilka vi är",
   quote:
     "”Vi är ett litet sammansvetsat team som brinner för att bygga golv i högsta kvalitet efter erat behov”",
   paragraphs: [
@@ -33,6 +38,42 @@ export const aboutContent: AboutContent = {
     "Vi är ett mindre, personligt företag som sätter stolthet i varje uppdrag vi tar oss an. Oavsett om det gäller en mindre golvläggning eller ett större projekt möter vi varje kund med samma engagemang, noggrannhet och respekt för både tid och budget.",
     "Med erfarenhet, yrkesskicklighet och ett öga för detaljer ser vi till att arbetet blir rätt från början. Vi tror på raka besked, tydlig kommunikation och långsiktiga relationer – många av våra kunder kommer till oss via rekommendationer, vilket vi ser som det finaste betyget vi kan få.",
   ],
+};
+
+export const servicesContent: ServicesContent = {
+  eyebrow: "Tjänster",
+  headline: "Vad vi gör",
+  intro:
+    "Från enskilda golvläggningar till helhetsentreprenader — vi tar hand om hela arbetet med samma omsorg för detaljer.",
+  items: [
+    {
+      kind: "floor",
+      title: "Golvläggning",
+      body: "Parkett, massivträ, vinyl och linoleum. Rätt material för rummet, lagt med precision.",
+    },
+    {
+      kind: "sand",
+      title: "Slipning & ytbehandling",
+      body: "Slipning, oljning och lackering av befintliga trägolv — vi återställer karaktären utan att förlora själen.",
+    },
+    {
+      kind: "build",
+      title: "Byggservice",
+      body: "Snickeri, anpassningar och mindre ombyggnad i samband med golvarbetet — en entreprenör, ett ansvar.",
+    },
+    {
+      kind: "consult",
+      title: "Rådgivning & offert",
+      body: "Platsbesök, materialval och tydlig offert utan kostnad. Du får svar inom ett dygn.",
+    },
+  ],
+};
+
+export const teamContent: TeamContent = {
+  eyebrow: "Vårt team",
+  headline: "Personerna bakom",
+  intro:
+    "Ett litet team med stort engagemang. Vi är hantverkare, projektledare och rådgivare som arbetat tillsammans i många år — och varje projekt går genom samma personer från första samtal till slutbesiktning.",
 };
 
 export const teamMembers: TeamMember[] = [
@@ -147,6 +188,7 @@ export const projects: Project[] = [
 ];
 
 export const contactInfo: ContactInfo = {
+  eyebrow: "Kontakt",
   heading: "Redo att starta en konversation?",
   sub: "Kontakta oss via mail så svarar vi så fort vi kan.",
   phone: "+46 8 123 45 67",

@@ -11,6 +11,8 @@ export interface HeroContent {
 }
 
 export interface AboutContent {
+  eyebrow: string;
+  headline: string;
   quote: string;
   paragraphs: string[];
 }
@@ -21,6 +23,27 @@ export interface TeamMember {
   bio: string;
   email?: string;
   photo?: string;
+}
+
+export interface TeamContent {
+  eyebrow: string;
+  headline: string;
+  intro: string;
+}
+
+export type ServiceKind = "floor" | "sand" | "build" | "consult";
+
+export interface Service {
+  kind: ServiceKind;
+  title: string;
+  body: string;
+}
+
+export interface ServicesContent {
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  items: Service[];
 }
 
 export interface Project {
@@ -38,6 +61,7 @@ export interface Project {
 }
 
 export interface ContactInfo {
+  eyebrow: string;
   heading: string;
   sub: string;
   phone: string;

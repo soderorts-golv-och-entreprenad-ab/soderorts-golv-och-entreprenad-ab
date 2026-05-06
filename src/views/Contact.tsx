@@ -85,13 +85,14 @@ function Contact() {
     <section id="kontakt" className="sg-band sg-band--navy sg-kontakt">
       <div className="sg-band__inner sg-kontakt__inner">
         <header className="sg-kontakt__head">
+          <p className="sg-eyebrow sg-eyebrow--light">{contactInfo.eyebrow}</p>
           <h2 className="sg-kontakt__title">{contactInfo.heading}</h2>
           <p className="sg-kontakt__sub">{contactInfo.sub}</p>
         </header>
 
         <div className="sg-kontakt__cols">
           <div className="sg-kontakt__col">
-            <h3 className="sg-kontakt__col-head">Kontakt</h3>
+            <h3 className="sg-kontakt__col-head">Kontakta oss</h3>
             <ul className="sg-kontakt__list">
               <Row
                 icon={<EmailIcon />}
