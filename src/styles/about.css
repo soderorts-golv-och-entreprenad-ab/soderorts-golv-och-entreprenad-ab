@@ -1,0 +1,69 @@
+/* ─── ABOUT ─ Dark split (photo + copy on charcoal band) ─────── */
+.sg-about--dark {
+  background: #1b1b1b;
+  color: var(--sg-on-dark);
+  padding: 0;
+}
+
+.sg-about__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: 640px;
+}
+
+.sg-about__photo {
+  width: 100%;
+  min-height: 560px;
+  background-color: var(--sg-stone);
+  background-size: cover;
+  background-position: center;
+  /* Drop a portrait of the team into public/about.jpg to enable: */
+  /* background-image: url("/about.jpg"); */
+}
+
+.sg-about__copy-col {
+  max-width: 560px;
+  padding: clamp(64px, 8vw, 120px) clamp(40px, 6vw, 96px);
+  align-self: center;
+}
+
+.sg-about__eyebrow {
+  margin-bottom: var(--sg-space-3);
+  color: var(--sg-on-dark-mute);
+}
+
+.sg-about__head {
+  font-family: var(--sg-font-head);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--sg-on-dark);
+  margin: 0 0 var(--sg-space-6);
+  text-transform: none;
+}
+
+.sg-about__paragraphs {
+  font-family: var(--sg-font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.sg-about__paragraphs p {
+  margin: 0 0 1em;
+}
+
+.sg-about__paragraphs p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .sg-about__split {
+    grid-template-columns: 1fr;
+  }
+  .sg-about__photo {
+    min-height: 360px;
+  }
+}

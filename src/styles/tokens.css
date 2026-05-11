@@ -1,0 +1,53 @@
+/* ─── Design tokens (Söderorts Golv design system) ───────────── */
+/* Monochrome palette — near-black, white, neutral greys. No blue. */
+:root {
+  --sg-navy: #1a1a1a;
+  --sg-navy-translucent: rgba(26, 26, 26, 0.92);
+  --sg-blue: #1a1a1a;
+  --sg-paper: #ffffff;
+  --sg-bone: #f2f2f2;
+  --sg-stone: #e6e6e6;
+  --sg-mist: #ededed;
+  --sg-ink: #1a1a1a;
+  --sg-ink-soft: #3a3a3a;
+  --sg-ink-mute: #6e6e6e;
+  --sg-on-dark: #ffffff;
+  --sg-on-dark-mute: rgba(255, 255, 255, 0.78);
+  --sg-accent: #b0b0b0;
+  --sg-accent-deep: #3a3a3a;
+  --sg-ochre: var(--sg-accent);
+
+  --sg-font-display: "Playfair Display", Georgia, serif;
+  --sg-font-head: "Oswald", "Helvetica Neue", Arial, sans-serif;
+  --sg-font-body:
+    "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sg-font-cta:
+    "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --sg-content: 1280px;
+  --sg-gutter: clamp(24px, 5vw, 80px);
+  --sg-section-y: clamp(64px, 9vw, 128px);
+  --sg-nav-height: 80px;
+
+  --sg-fs-section: clamp(1.625rem, 2.6vw, 2.25rem);
+  --sg-tracking-section: 0.04em;
+
+  --sg-line: #d6d6d6;
+
+  --sg-space-2: 8px;
+  --sg-space-3: 16px;
+  --sg-space-4: 24px;
+  --sg-space-5: 32px;
+  --sg-space-6: 48px;
+  --sg-space-7: 64px;
+  --sg-space-8: 96px;
+
+  --sg-dur-fast: 140ms;
+  --sg-dur: 240ms;
+  --sg-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* Anchor offset so sticky-nav doesn't cover scroll-to-section targets */
+section[id] {
+  scroll-margin-top: var(--sg-nav-height);
+}

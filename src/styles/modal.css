@@ -1,0 +1,141 @@
+/* ─── PROJECT MODAL ─────────────────────────────────────────── */
+/* Layout: the overlay is a fixed full-viewport flex container that
+   centres a fixed-height panel. The PANEL is the scroll container —
+   not the overlay — so a position: sticky close button inside the
+   panel stays visible while body content scrolls. */
+.sg-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(10, 14, 30, 0.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 24px;
+  animation: sg-modal-fade 0.22s ease both;
+}
+
+@keyframes sg-modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sg-modal__panel {
+  position: relative;
+  background: var(--sg-paper);
+  width: 100%;
+  max-width: 880px;
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  animation: sg-modal-rise 0.28s var(--sg-ease) both;
+}
+
+@keyframes sg-modal-rise {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sg-modal__close {
+  position: sticky;
+  top: 12px;
+  align-self: flex-end;
+  /* Negative margin-bottom lets the photo flow up under the sticky
+     close button so it sits *on* the photo rather than pushing it
+     down 52px. */
+  margin: 12px 12px -52px 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.92);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sg-ink);
+  z-index: 2;
+  transition: background var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-modal__close:hover {
+  background: #fff;
+}
+
+.sg-modal__photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-color: var(--sg-stone);
+  display: block;
+}
+
+.sg-modal__body {
+  padding: var(--sg-space-6) var(--sg-space-6) var(--sg-space-7);
+}
+
+.sg-modal__meta {
+  font-family: var(--sg-font-body);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sg-ink-mute);
+  margin: 0 0 var(--sg-space-2);
+}
+
+.sg-modal__title {
+  font-family: var(--sg-font-head);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--sg-ink);
+  margin: 0 0 var(--sg-space-3);
+}
+
+.sg-modal__desc {
+  font-family: var(--sg-font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--sg-ink);
+  margin: 0 0 var(--sg-space-5);
+  max-width: 64ch;
+}
+
+.sg-modal__story p {
+  font-family: var(--sg-font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--sg-ink-soft);
+  margin: 0 0 var(--sg-space-3);
+  max-width: 64ch;
+}
+
+.sg-modal__story p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .sg-modal {
+    padding: 0;
+  }
+  .sg-modal__panel {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .sg-modal__body {
+    padding: var(--sg-space-5) var(--sg-space-4);
+  }
+}

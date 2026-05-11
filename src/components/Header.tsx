@@ -4,8 +4,10 @@ import {
   brandMonogram,
   companyShortName,
   companySubmark,
+  navHref,
   navLinks,
 } from "../data";
+import useFocusTrap from "../hooks/useFocusTrap";
 
 const SCROLL_THRESHOLD = 60;
 
@@ -15,6 +17,7 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const solid = scrolled || !isLanding;
+  const drawerRef = useFocusTrap<HTMLDivElement>(menuOpen);
 
   useEffect(() => {
     if (!isLanding) return;
@@ -63,7 +66,7 @@ function Header() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              to={isLanding ? link.href : `/${link.href}`}
+              to={navHref(link.href, isLanding)}
               className="sg-nav__link"
             >
               {link.label}
@@ -71,7 +74,7 @@ function Header() {
           ))}
         </nav>
         <Link
-          to={isLanding ? "#kontakt" : "/#kontakt"}
+          to={navHref("#kontakt", isLanding)}
           className="sg-btn sg-btn--solid-light sg-btn--small sg-nav__cta"
         >
           Kontakta oss
@@ -91,6 +94,7 @@ function Header() {
       </div>
 
       <div
+        ref={drawerRef}
         id="sg-mobile-menu"
         className="sg-nav__drawer"
         role="dialog"
@@ -102,7 +106,7 @@ function Header() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              to={isLanding ? link.href : `/${link.href}`}
+              to={navHref(link.href, isLanding)}
               className="sg-nav__drawer-link"
               onClick={closeMenu}
             >
@@ -111,7 +115,7 @@ function Header() {
           ))}
         </nav>
         <Link
-          to={isLanding ? "#kontakt" : "/#kontakt"}
+          to={navHref("#kontakt", isLanding)}
           className="sg-btn sg-btn--solid-light sg-nav__drawer-cta"
           onClick={closeMenu}
         >

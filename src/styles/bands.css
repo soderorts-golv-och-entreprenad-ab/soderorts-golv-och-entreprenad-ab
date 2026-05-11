@@ -1,0 +1,65 @@
+/* ─── BANDS (full-bleed sections) ───────────────────────────── */
+/* Body sections (About, Projects, Team, Kontakt) get wider page-edge
+   breathing room and a narrower content rail than the nav / hero / footer.
+   Redeclaring --sg-content here scopes the narrower rail to band descendants
+   only — the root token (1280px) still applies to nav, hero, and footer. */
+.sg-band {
+  width: 100%;
+  padding: var(--sg-section-y) clamp(40px, 7vw, 128px);
+  --sg-content: 1180px;
+}
+
+.sg-band--paper {
+  background: var(--sg-paper);
+  color: var(--sg-ink);
+}
+
+.sg-band--mist {
+  background: var(--sg-mist);
+  color: var(--sg-ink);
+}
+
+.sg-band--navy {
+  background: var(--sg-navy);
+  color: var(--sg-on-dark);
+}
+
+.sg-band__inner {
+  max-width: var(--sg-content);
+  margin: 0 auto;
+}
+
+/* ─── SECTION HEADS ─────────────────────────────────────────── */
+.sg-section-head {
+  font-family: var(--sg-font-head);
+  font-size: var(--sg-fs-section);
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: var(--sg-tracking-section);
+  margin: 0 0 var(--sg-space-6);
+}
+
+.sg-section-head--ink {
+  color: var(--sg-blue);
+}
+
+.sg-section-head--center {
+  text-align: center;
+}
+
+/* ─── EYEBROW ───────────────────────────────────────────────── */
+.sg-eyebrow {
+  display: inline-block;
+  font-family: var(--sg-font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sg-accent-deep);
+  margin: 0 0 var(--sg-space-3);
+}
+
+.sg-eyebrow--light {
+  color: var(--sg-accent);
+}

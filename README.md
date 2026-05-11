@@ -1,75 +1,90 @@
-# React + TypeScript + Vite
+# Söderorts Golv & Entreprenad AB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site for Söderorts Golv, a Stockholm-based flooring and construction
+company. Single-page React app rendered from a Vite build.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Command           | Purpose                                                              |
+| ----------------- | -------------------------------------------------------------------- |
+| `npm run dev`     | Start the Vite dev server with HMR                                   |
+| `npm run build`   | Type-check (`tsc -b`) then produce a production bundle in `dist/`    |
+| `npm run lint`    | Run ESLint across `src/`                                             |
+| `npm run preview` | Serve the built `dist/` locally                                      |
 
-## React Compiler
+`npm run build` is the type-check gate — the build fails on TS errors. There
+is no test runner.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Stack
 
-Note: This will impact Vite dev & build performances.
+- React 19 + Vite 8 + TypeScript 6
+- React Compiler (`babel-plugin-react-compiler`), so manual `useMemo` /
+  `useCallback` / `React.memo` are unnecessary in nearly all cases
+- React Router 7 (currently a single `/` route; `BrowserRouter` is kept so
+  `useLocation` is available to Header, Footer, and `ScrollToHash`)
+- ESLint flat config (`@eslint/js`, `typescript-eslint`,
+  `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`)
 
-## Expanding the ESLint configuration
+## Project layout
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── App.tsx                 Router shell — header / main / footer
+├── main.tsx                Entry; mounts <App /> in BrowserRouter
+├── data.ts                 All site content (nav links, hero, services,
+│                           projects, team, partners, certificates, contact)
+├── types.ts                Shared type definitions for the data above
+├── index.css               Global resets
+├── App.css                 Design tokens + every component's styles
+├── assets/                 Hero, project, team photos + partner/cert logos
+├── components/             Reusable pieces
+│   ├── Header.tsx            Sticky nav + mobile hamburger drawer
+│   ├── Footer.tsx
+│   ├── ProjectCard.tsx       Card in the Projects grid (button that opens
+│   │                         the modal)
+│   ├── ProjectModal.tsx      Dialog with project detail + sticky close
+│   ├── ScrollToHash.tsx      Smooth-scrolls to `#hash` on route change
+│   └── TeamCard.tsx
+├── hooks/
+│   └── useFocusTrap.ts     Save/restore focus + cycle Tab inside an
+│                           element while active
+└── views/                  One file per landing-page section
+    ├── Landing.tsx           Composes the sections in order
+    ├── Hero.tsx
+    ├── Services.tsx
+    ├── Projects.tsx
+    ├── About.tsx
+    ├── Team.tsx
+    ├── Partners.tsx
+    ├── Certificates.tsx
+    └── Contact.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## CSS conventions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- BEM-flavoured class names with the `sg-` prefix:
+  `sg-block`, `sg-block__element`, `sg-block--modifier`.
+- Design tokens live as CSS custom properties at the top of `App.css`
+  (`--sg-navy`, `--sg-space-3`, `--sg-font-head`, `--sg-dur-fast`, …).
+  Reach for the tokens; only hard-code values if you're consciously
+  stepping outside the system.
+- One consolidated mobile breakpoint (`@media (max-width: 720px)`) lives
+  at the end of `App.css` so it overrides section-local breakpoints
+  above without needing `min-width` guards on every one.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Accessibility
+
+- `ProjectModal` and the mobile drawer use `useFocusTrap` to keep
+  keyboard focus inside while open, and restore focus to the trigger
+  when closed.
+- Both dismiss on Escape and the modal also dismisses on overlay click.
+- The brand wordmark is exposed to assistive tech via `aria-label` so
+  the visually-stylised two-line text is still announced.
+
+## Routing
+
+The site is currently single-page; `App.tsx` renders `<Landing />`
+directly. `BrowserRouter` is still mounted in `main.tsx` so
+`useLocation` works inside Header, Footer, and `ScrollToHash`. If
+multi-page surfaces (e.g. dedicated project pages) come back, reintroduce
+`<Routes>` / `<Route>` in `App.tsx`.

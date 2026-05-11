@@ -1,4 +1,3 @@
-import { Route, Routes } from "react-router";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -11,9 +10,7 @@ function App() {
       <ScrollToHash />
       <Header />
       <main>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-        </Routes>
+        <Landing />
       </main>
       <Footer />
     </>

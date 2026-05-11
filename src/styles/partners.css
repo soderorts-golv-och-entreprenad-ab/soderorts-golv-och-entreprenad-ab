@@ -1,0 +1,55 @@
+/* ─── PARTNERS ──────────────────────────────────────────────── */
+.sg-partners {
+  background: var(--sg-mist);
+  color: var(--sg-ink);
+  padding-top: var(--sg-space-6);
+  padding-bottom: var(--sg-space-6);
+}
+
+.sg-partners__eyebrow {
+  margin-bottom: var(--sg-space-3);
+}
+
+.sg-partners__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--sg-space-5) var(--sg-space-6);
+  align-items: center;
+}
+
+.sg-partners__cell {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sg-space-3);
+}
+
+.sg-partners__logo {
+  max-width: 100%;
+  max-height: 88%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.82;
+  transition: opacity var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-partners__cell:hover .sg-partners__logo {
+  opacity: 1;
+}
+
+@media (max-width: 1100px) {
+  .sg-partners__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sg-partners__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

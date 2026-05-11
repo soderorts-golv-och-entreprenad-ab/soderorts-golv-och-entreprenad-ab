@@ -1,0 +1,49 @@
+/* ─── CERTIFICATES ─────────────────────────────────────────── */
+.sg-certs {
+  background: var(--sg-paper);
+  color: var(--sg-ink);
+  padding-top: var(--sg-space-6);
+  padding-bottom: var(--sg-space-6);
+}
+
+.sg-certs__eyebrow {
+  margin-bottom: var(--sg-space-3);
+}
+
+.sg-certs__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sg-space-4);
+}
+
+.sg-certs__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sg-space-5);
+}
+
+.sg-certs__logo {
+  height: 96px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .sg-certs__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sg-certs__logo {
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sg-certs__grid {
+    grid-template-columns: 1fr;
+  }
+}

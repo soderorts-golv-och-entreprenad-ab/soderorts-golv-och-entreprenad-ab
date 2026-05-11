@@ -52,7 +52,6 @@ export interface Project {
   year: number;
   photo?: string;
   story?: string[];
-  gallery?: string[];
 }
 
 export interface Partner {

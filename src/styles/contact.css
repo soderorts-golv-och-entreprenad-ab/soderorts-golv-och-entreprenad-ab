@@ -1,0 +1,112 @@
+/* ─── KONTAKT ───────────────────────────────────────────────── */
+.sg-kontakt__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 6vw, 80px);
+}
+
+.sg-kontakt__head {
+  max-width: 880px;
+}
+
+.sg-kontakt__title {
+  font-family: var(--sg-font-head);
+  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--sg-on-dark);
+  margin: 0 0 var(--sg-space-3);
+}
+
+.sg-kontakt__sub {
+  font-family: var(--sg-font-body);
+  font-size: clamp(1rem, 1.25vw, 1.1875rem);
+  line-height: 1.55;
+  color: var(--sg-on-dark-mute);
+  margin: 0;
+  max-width: 720px;
+}
+
+.sg-kontakt__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 6vw, 96px);
+  max-width: 1100px;
+}
+
+.sg-kontakt__col-head {
+  font-family: var(--sg-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sg-on-dark);
+  margin: 0 0 var(--sg-space-5);
+}
+
+.sg-kontakt__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2vw, 28px);
+}
+
+.sg-kontakt__row {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2vw, 28px);
+}
+
+.sg-kontakt__row-icon {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  color: var(--sg-accent);
+}
+
+.sg-kontakt__row-icon svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.sg-kontakt__row-text {
+  font-family: var(--sg-font-body);
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  line-height: 1.5;
+}
+
+.sg-kontakt__row-prefix {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sg-kontakt__row-value {
+  color: var(--sg-on-dark);
+}
+
+.sg-kontakt__row-link {
+  color: inherit;
+  transition: color var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-kontakt__row-link .sg-kontakt__row-value {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 1px;
+  transition: border-color var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-kontakt__row-link:hover .sg-kontakt__row-value {
+  border-bottom-color: var(--sg-ochre);
+}
+
+@media (max-width: 720px) {
+  .sg-kontakt__cols {
+    grid-template-columns: 1fr;
+  }
+}

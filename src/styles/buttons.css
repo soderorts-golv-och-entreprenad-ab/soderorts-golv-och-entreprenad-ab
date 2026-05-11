@@ -1,0 +1,43 @@
+/* ─── BUTTONS ───────────────────────────────────────────────── */
+.sg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sg-font-cta);
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  padding: 14px 28px;
+  border: 2px solid currentColor;
+  border-radius: 0;
+  white-space: nowrap;
+  transition:
+    background-color var(--sg-dur-fast) var(--sg-ease),
+    color var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-btn--small {
+  font-size: 0.8125rem;
+  padding: 10px 20px;
+}
+
+.sg-btn--outline-light {
+  color: var(--sg-on-dark);
+  background: transparent;
+}
+
+.sg-btn--outline-light:hover {
+  background: var(--sg-on-dark);
+  color: var(--sg-navy);
+}
+
+.sg-btn--solid-light {
+  color: var(--sg-navy);
+  background: var(--sg-on-dark);
+  border-color: var(--sg-on-dark);
+}
+
+.sg-btn--solid-light:hover {
+  background: transparent;
+  color: var(--sg-on-dark);
+}

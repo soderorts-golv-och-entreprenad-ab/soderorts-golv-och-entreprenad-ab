@@ -5,6 +5,7 @@ import {
   companyShortName,
   companySubmark,
   contactInfo,
+  navHref,
   navLinks,
   orgNumber,
 } from "../data";
@@ -15,7 +16,6 @@ const mailHref = `mailto:${contactInfo.email}`;
 function Footer() {
   const { pathname } = useLocation();
   const isLanding = pathname === "/";
-  const linkTo = (href: string) => (isLanding ? href : `/${href}`);
   const year = new Date().getFullYear();
 
   return (
@@ -40,7 +40,7 @@ function Footer() {
           <ul className="sg-footer__list">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link to={linkTo(link.href)}>{link.label}</Link>
+                <Link to={navHref(link.href, isLanding)}>{link.label}</Link>
               </li>
             ))}
           </ul>

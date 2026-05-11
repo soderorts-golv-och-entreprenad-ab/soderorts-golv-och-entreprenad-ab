@@ -1,0 +1,102 @@
+/* ─── PROJECTS ──────────────────────────────────────────────── */
+.sg-projects .sg-section-head {
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.sg-projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sg-space-4);
+}
+
+.sg-project {
+  background: var(--sg-paper);
+  border: 1px solid var(--sg-line);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform var(--sg-dur-fast) var(--sg-ease),
+    box-shadow var(--sg-dur-fast) var(--sg-ease),
+    border-color var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(26, 26, 26, 0.12);
+  border-color: var(--sg-accent);
+}
+
+.sg-project__photo {
+  aspect-ratio: 1 / 1;
+  background-color: var(--sg-stone);
+  background-size: cover;
+  background-position: center;
+}
+
+.sg-project__bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sg-space-3);
+  padding: 14px 18px;
+  background: var(--sg-navy);
+  color: var(--sg-on-dark);
+}
+
+.sg-project__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sg-project__title {
+  font-family: var(--sg-font-head);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sg-on-dark);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sg-project__meta {
+  font-family: var(--sg-font-body);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.sg-project__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sg-on-dark);
+  transition: transform var(--sg-dur-fast) var(--sg-ease);
+}
+
+.sg-project:hover .sg-project__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1000px) {
+  .sg-projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .sg-projects__grid {
+    grid-template-columns: 1fr;
+  }
+}
