@@ -6,21 +6,19 @@ export interface NavLink {
 export interface HeroContent {
   claim: string;
   lead: string;
-  cta: string;
-  ctaHref: string;
+  primaryCta: { label: string; href: string };
+  secondaryCta: { label: string; href: string };
 }
 
 export interface AboutContent {
   eyebrow: string;
   headline: string;
-  quote: string;
   paragraphs: string[];
 }
 
 export interface TeamMember {
   name: string;
   role: string;
-  bio: string;
   email?: string;
   photo?: string;
 }
@@ -53,11 +51,18 @@ export interface Project {
   location: string;
   year: number;
   photo?: string;
-  client?: string;
-  area?: string;
   story?: string[];
-  scope?: string[];
   gallery?: string[];
+}
+
+export interface Partner {
+  name: string;
+  logo: string;
+}
+
+export interface Certificate {
+  name: string;
+  logo: string;
 }
 
 export interface ContactInfo {

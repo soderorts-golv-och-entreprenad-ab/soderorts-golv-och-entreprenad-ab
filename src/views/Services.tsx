@@ -68,7 +68,7 @@ const ICONS: Record<ServiceKind, () => React.JSX.Element> = {
 
 function Services() {
   return (
-    <section id="tjanster" className="sg-band sg-band--paper sg-services">
+    <section id="tjanster" className="sg-band sg-band--mist sg-services">
       <div className="sg-band__inner">
         <header className="sg-services__head">
           <p className="sg-eyebrow">{servicesContent.eyebrow}</p>

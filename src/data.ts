@@ -1,8 +1,19 @@
+import apoteaLogo from "./assets/partners/apotea.png";
+import karolinskaLogo from "./assets/partners/karolinska.png";
+import branschvinnare from "./assets/certificates/branschvinnare-2025.webp";
+import byggforetagen from "./assets/certificates/byggforetagen-medlem.png";
+import ucSigill from "./assets/certificates/uc-sigill.png";
+import ucTillvaxt from "./assets/certificates/uc-tillvaxtcertifikat.png";
+import floorPhoto from "./assets/floor-pattern.png";
+import portraitPhoto from "./assets/portrait-placeholder.png";
+
 import type {
   AboutContent,
+  Certificate,
   ContactInfo,
   HeroContent,
   NavLink,
+  Partner,
   Project,
   ServicesContent,
   TeamContent,
@@ -11,6 +22,7 @@ import type {
 
 export const companyName = "Söderorts Golv och Entreprenad AB";
 export const companyShortName = "Söderorts Golv";
+export const companySubmark = "& entreprenad AB";
 export const brandMonogram = "SG";
 
 export const navLinks: NavLink[] = [
@@ -22,17 +34,15 @@ export const navLinks: NavLink[] = [
 ];
 
 export const heroContent: HeroContent = {
-  claim: "Vi bygger kvalitetsgolv sedan 2009.",
+  claim: "Allt inom bygg och golv — kvalitet i varje steg",
   lead: "Hantverk, tydlig kommunikation och långsiktiga relationer — från första besök till slutbesiktning.",
-  cta: "Se våra projekt",
-  ctaHref: "#projekt",
+  primaryCta: { label: "Se våra projekt", href: "#projekt" },
+  secondaryCta: { label: "Kontakta oss", href: "#kontakt" },
 };
 
 export const aboutContent: AboutContent = {
   eyebrow: "Om oss",
   headline: "Vilka vi är",
-  quote:
-    "”Vi är ett litet sammansvetsat team som brinner för att bygga golv i högsta kvalitet efter erat behov”",
   paragraphs: [
     "På Söderorts Golv och Entreprenad AB brinner vi för hantverket och för att skapa miljöer där människor trivs. För oss handlar golv inte bara om material – det handlar om känslan i ett rum, helheten i ett hem och detaljerna som gör skillnad.",
     "Vi är ett mindre, personligt företag som sätter stolthet i varje uppdrag vi tar oss an. Oavsett om det gäller en mindre golvläggning eller ett större projekt möter vi varje kund med samma engagemang, noggrannhet och respekt för både tid och budget.",
@@ -77,30 +87,14 @@ export const teamContent: TeamContent = {
 };
 
 export const teamMembers: TeamMember[] = [
-  {
-    name: "Anders Lindqvist",
-    role: "Grundare & VD",
-    bio: "25 års erfarenhet inom golvbranschen. Driver företaget med passion för hantverk och hållbara material.",
-    email: "anders@soderortsgolv.se",
-  },
-  {
-    name: "Maria Bergström",
-    role: "Projektledare",
-    bio: "Håller ihop alla trådar och ser till att varje projekt levereras i tid och med högsta kvalitet.",
-    email: "maria@soderortsgolv.se",
-  },
-  {
-    name: "Erik Johansson",
-    role: "Golvläggare",
-    bio: "Specialist på parkett och massivträgolv. Noggrann hantverkare med skarpt öga för detaljer.",
-    email: "erik@soderortsgolv.se",
-  },
-  {
-    name: "Sara Nyman",
-    role: "Golvläggare",
-    bio: "Expert på linoleum- och vinylgolv i kommersiella miljöer och offentliga rum.",
-    email: "sara@soderortsgolv.se",
-  },
+  { name: "Anders Lindqvist", role: "Grundare & VD", email: "anders@soderortsgolv.se", photo: portraitPhoto },
+  { name: "Maria Bergström", role: "Projektledare", email: "maria@soderortsgolv.se", photo: portraitPhoto },
+  { name: "Erik Johansson", role: "Golvläggare", email: "erik@soderortsgolv.se", photo: portraitPhoto },
+  { name: "Sofia Nilsson", role: "Inköpsansvarig", email: "sofia@soderortsgolv.se", photo: portraitPhoto },
+  { name: "Johan Andersson", role: "Golvläggare", email: "johan@soderortsgolv.se", photo: portraitPhoto },
+  { name: "Linnea Karlsson", role: "Kundansvarig", email: "linnea@soderortsgolv.se", photo: portraitPhoto },
+  { name: "Mikael Holm", role: "Lärling", email: "mikael@soderortsgolv.se", photo: portraitPhoto },
+  { name: "Karin Sundqvist", role: "Ekonomi & administration", email: "karin@soderortsgolv.se", photo: portraitPhoto },
 ];
 
 export const projects: Project[] = [
@@ -111,14 +105,7 @@ export const projects: Project[] = [
       "Helrenovering av 120 kvm bostad med massiv ekparkett, golvvärme och handslipad yta.",
     location: "Södermalm, Stockholm",
     year: 2025,
-    client: "Privatperson",
-    area: "120 kvm",
-    scope: [
-      "Rivning av befintligt golv",
-      "Installation av golvvärme",
-      "Massiv ekparkett, 21 mm",
-      "Handslipning och oljebehandling",
-    ],
+    photo: floorPhoto,
     story: [
       "En klassisk sekelskiftslägenhet på Södermalm fick nytt liv när vi ersatte det slitna laminatgolvet med en massiv ekparkett i 21 mm tjocklek. Kunden ville behålla rummens varma karaktär men samtidigt få in ett mer modernt uttryck.",
       "Innan parketten lades installerade vi vattenburen golvvärme i hela bostaden. Slipningen utfördes för hand i tre steg och avslutades med en hårdvaxolja som lyfter ekens naturliga ådring utan att göra ytan blank.",
@@ -132,14 +119,7 @@ export const projects: Project[] = [
       "1 800 kvm linoleumgolv i öppet kontorslandskap för ett snabbväxande tech-bolag.",
     location: "Slussen, Stockholm",
     year: 2024,
-    client: "Tech-bolag (NDA)",
-    area: "1 800 kvm",
-    scope: [
-      "Avjämning av betongbjälklag",
-      "Linoleum från Forbo, 2,5 mm",
-      "Akustikmatta i mötesrum",
-      "Trösklar i massiv ek",
-    ],
+    photo: floorPhoto,
     story: [
       "Ett snabbväxande tech-bolag flyttade in i tre våningsplan vid Slussen och behövde ett golv som tål hög belastning, är ljudabsorberande och åldras vackert. Vi valde linoleum från Forbo i två toner för att markera olika zoner.",
       "Arbetet utfördes i etapper kvällstid och under helger så att verksamheten kunde fortgå. Avjämningen av det 60-åriga betongbjälklaget var den största utmaningen — vi använde självflytande spackel i tre lager för att nå tillräcklig planhet.",
@@ -152,14 +132,7 @@ export const projects: Project[] = [
       "Nytt vinylgolv i 15 klassrum och korridorer — hela projektet slutfört under sommarlovet.",
     location: "Huddinge",
     year: 2024,
-    client: "Huddinge kommun",
-    area: "950 kvm",
-    scope: [
-      "Demontering av plastmatta",
-      "Spackling och primning",
-      "Heterogent vinylgolv, slitstyrka 34",
-      "Kantsvetsning och hålkäl",
-    ],
+    photo: floorPhoto,
     story: [
       "En grundskola i Huddinge behövde ersätta sina plastmattor från 80-talet. Hela projektet — 15 klassrum, två korridorer och ett personalrum — skulle vara klart innan höstterminen, vilket gav oss exakt åtta veckor.",
       "Vi delade in arbetet i fem zoner och arbetade parallellt med tre lag. Det nya vinylgolvet är heterogent, har slitstyrka 34 och kantsvetsade fogar för enkel städning.",
@@ -172,33 +145,65 @@ export const projects: Project[] = [
       "Slipning och oljebehandling av äldre furugolv. Vi bevarade den ursprungliga karaktären.",
     location: "Gamla Stan, Stockholm",
     year: 2023,
-    client: "Restaurangägare",
-    area: "85 kvm",
-    scope: [
-      "Försiktig slipning, 3 steg",
-      "Lagning av enstaka brädor",
-      "Pigmenterad olja",
-      "Underhållsråd och kit",
-    ],
+    photo: floorPhoto,
     story: [
       "Ett furugolv från sent 1800-tal i en restaurang i Gamla Stan hade slitits ner under decennier. Ägaren ville inte byta golvet — patinan och de breda brädorna var en del av rummets själ — utan att ge det nytt liv.",
       "Vi slipade ytan i tre steg med varsamma korn för att inte tappa virkets karaktär. Enstaka brädor lagades med återbrukad fura från samma period.",
     ],
   },
+  {
+    slug: "villa-saltsjobaden",
+    title: "Villa i Saltsjöbaden",
+    description:
+      "Vitoljad ekparkett genom hela bottenvåningen. 240 kvm av sömlös ljus golvyta.",
+    location: "Saltsjöbaden",
+    year: 2024,
+    photo: floorPhoto,
+    story: [
+      "En villa från 70-talet fick en ljus och modern bottenvåning med vitoljad ek.",
+    ],
+  },
+  {
+    slug: "butik-ostermalm",
+    title: "Butik på Östermalm",
+    description:
+      "Polerad betong i ny flaggskeppsbutik. Minimalistisk yta som tål hög kundbelastning.",
+    location: "Östermalm",
+    year: 2024,
+    photo: floorPhoto,
+    story: ["En polerad betongyta som lyfter butikens minimalistiska uttryck."],
+  },
+];
+
+export const partners: Partner[] = [
+  { name: "Apotea", logo: apoteaLogo },
+  { name: "Karolinska Universitetssjukhuset", logo: karolinskaLogo },
+  { name: "Apotea", logo: apoteaLogo },
+  { name: "Karolinska Universitetssjukhuset", logo: karolinskaLogo },
+  { name: "Apotea", logo: apoteaLogo },
+  { name: "Karolinska Universitetssjukhuset", logo: karolinskaLogo },
+  { name: "Apotea", logo: apoteaLogo },
+  { name: "Karolinska Universitetssjukhuset", logo: karolinskaLogo },
+  { name: "Apotea", logo: apoteaLogo },
+  { name: "Karolinska Universitetssjukhuset", logo: karolinskaLogo },
+];
+
+export const certificates: Certificate[] = [
+  { name: "Branschvinnare 2025", logo: branschvinnare },
+  { name: "Byggföretagen Medlem", logo: byggforetagen },
+  { name: "UC Sigill", logo: ucSigill },
+  { name: "Nordiskt Tillväxtcertifikat", logo: ucTillvaxt },
 ];
 
 export const contactInfo: ContactInfo = {
   eyebrow: "Kontakt",
   heading: "Redo att starta en konversation?",
   sub: "Kontakta oss via mail så svarar vi så fort vi kan.",
-  phone: "+46 8 123 45 67",
+  phone: "+46 703 33 33 33",
   email: "info@soderortsgolv.se",
-  address: "Storgatan 12, 123 45 Stockholm",
+  address: "Kardemummagränd 1, 135 36 Tyresö",
   instagramHandle: "soderortsgolv",
   instagramUrl: "https://instagram.com/soderortsgolv",
 };
-
-export const companyBlurb =
-  "Hantverk i golv och bygg sedan 2009. Vi bygger trygga, vackra och hållbara miljöer åt privatpersoner och fastighetsägare i Stockholm.";
 
 export const orgNumber = "556123-4567";

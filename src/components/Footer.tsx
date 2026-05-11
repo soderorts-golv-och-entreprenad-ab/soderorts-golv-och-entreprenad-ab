@@ -1,19 +1,13 @@
 import { Link, useLocation } from "react-router";
 import {
   brandMonogram,
-  companyBlurb,
   companyName,
   companyShortName,
+  companySubmark,
   contactInfo,
+  navLinks,
   orgNumber,
 } from "../data";
-
-const footerNav = [
-  { label: "Hem", href: "#hem" },
-  { label: "Om oss", href: "#om-oss" },
-  { label: "Projekt", href: "#projekt" },
-  { label: "Kontakt", href: "#kontakt" },
-];
 
 const telHref = `tel:${contactInfo.phone.replace(/\s/g, "")}`;
 const mailHref = `mailto:${contactInfo.email}`;
@@ -29,16 +23,22 @@ function Footer() {
       <div className="sg-footer__inner">
         <div className="sg-footer__col sg-footer__col--brand">
           <div className="sg-footer__brand">
-            <span className="sg-footer__mark">{brandMonogram}</span>
-            <span className="sg-footer__wordmark">{companyShortName}</span>
+            <span className="sg-footer__mark" aria-hidden="true">
+              {brandMonogram}
+            </span>
+            <span className="sg-footer__wordmark">
+              <span className="sg-footer__wordmark-name">
+                {companyShortName}
+              </span>
+              <span className="sg-footer__wordmark-sub">{companySubmark}</span>
+            </span>
           </div>
-          <p className="sg-footer__blurb">{companyBlurb}</p>
         </div>
 
         <div className="sg-footer__col">
           <h4 className="sg-footer__heading">Navigera</h4>
           <ul className="sg-footer__list">
-            {footerNav.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link to={linkTo(link.href)}>{link.label}</Link>
               </li>
@@ -58,7 +58,6 @@ function Footer() {
             <li>{contactInfo.address}</li>
           </ul>
         </div>
-
       </div>
 
       <div className="sg-footer__bar">

@@ -3,7 +3,7 @@ import { teamContent, teamMembers } from "../data";
 
 function Team() {
   return (
-    <section id="vart-team" className="sg-band sg-band--mist">
+    <section id="vart-team" className="sg-band sg-band--paper">
       <div className="sg-band__inner">
         <header className="sg-team__head">
           <p className="sg-eyebrow">{teamContent.eyebrow}</p>
