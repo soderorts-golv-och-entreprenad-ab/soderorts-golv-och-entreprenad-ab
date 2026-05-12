@@ -207,7 +207,3 @@ export const contactInfo: ContactInfo = {
 };
 
 export const orgNumber = "556123-4567";
-
-export function navHref(hash: string, isLanding: boolean): string {
-  return isLanding ? hash : `/${hash}`;
-}

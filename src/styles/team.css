@@ -9,7 +9,7 @@
 
 .sg-team__intro {
   font-family: var(--sg-font-body);
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-size: 0.875rem;
   line-height: 1.6;
   color: var(--sg-ink-soft);
   margin: var(--sg-space-3) 0 0;

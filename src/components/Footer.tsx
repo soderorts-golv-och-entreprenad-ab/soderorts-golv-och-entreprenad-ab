@@ -1,11 +1,9 @@
-import { Link, useLocation } from "react-router";
 import {
   brandMonogram,
   companyName,
   companyShortName,
   companySubmark,
   contactInfo,
-  navHref,
   navLinks,
   orgNumber,
 } from "../data";
@@ -14,8 +12,6 @@ const telHref = `tel:${contactInfo.phone.replace(/\s/g, "")}`;
 const mailHref = `mailto:${contactInfo.email}`;
 
 function Footer() {
-  const { pathname } = useLocation();
-  const isLanding = pathname === "/";
   const year = new Date().getFullYear();
 
   return (
@@ -40,7 +36,7 @@ function Footer() {
           <ul className="sg-footer__list">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link to={navHref(link.href, isLanding)}>{link.label}</Link>
+                <a href={link.href}>{link.label}</a>
               </li>
             ))}
           </ul>

@@ -22,7 +22,7 @@
 
 .sg-kontakt__sub {
   font-family: var(--sg-font-body);
-  font-size: clamp(1rem, 1.25vw, 1.1875rem);
+  font-size: 0.875rem;
   line-height: 1.55;
   color: var(--sg-on-dark-mute);
   margin: 0;
@@ -78,7 +78,7 @@
 
 .sg-kontakt__row-text {
   font-family: var(--sg-font-body);
-  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  font-size: 0.875rem;
   line-height: 1.5;
 }
 

@@ -20,8 +20,9 @@ is no test runner.
 - React 19 + Vite 8 + TypeScript 6
 - React Compiler (`babel-plugin-react-compiler`), so manual `useMemo` /
   `useCallback` / `React.memo` are unnecessary in nearly all cases
-- React Router 7 (currently a single `/` route; `BrowserRouter` is kept so
-  `useLocation` is available to Header, Footer, and `ScrollToHash`)
+- No router. The site is single-page; nav links are plain `<a href="#hash">`
+  anchors and the browser handles in-page scrolling natively (with
+  `scroll-behavior: smooth` set on `<html>` in `index.css`)
 - ESLint flat config (`@eslint/js`, `typescript-eslint`,
   `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`)
 
@@ -43,7 +44,6 @@ src/
 │   ├── ProjectCard.tsx       Card in the Projects grid (button that opens
 │   │                         the modal)
 │   ├── ProjectModal.tsx      Dialog with project detail + sticky close
-│   ├── ScrollToHash.tsx      Smooth-scrolls to `#hash` on route change
 │   └── TeamCard.tsx
 ├── hooks/
 │   └── useFocusTrap.ts     Save/restore focus + cycle Tab inside an
@@ -81,10 +81,10 @@ src/
 - The brand wordmark is exposed to assistive tech via `aria-label` so
   the visually-stylised two-line text is still announced.
 
-## Routing
+## Navigation
 
-The site is currently single-page; `App.tsx` renders `<Landing />`
-directly. `BrowserRouter` is still mounted in `main.tsx` so
-`useLocation` works inside Header, Footer, and `ScrollToHash`. If
-multi-page surfaces (e.g. dedicated project pages) come back, reintroduce
-`<Routes>` / `<Route>` in `App.tsx`.
+The site is a single page. Anchors use plain `<a href="#hash">` and rely
+on the browser's native hash-jump behaviour. `scroll-behavior: smooth` on
+`<html>` makes the jump animated, and `scroll-margin-top` on `section[id]`
+offsets the destination so the sticky nav doesn't cover the target. If
+multi-page surfaces are reintroduced later, add `react-router` back.

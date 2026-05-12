@@ -7,24 +7,24 @@
 
 .sg-about__split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Copy column gets ~60% of the band — the photo is decorative, the
+     paragraphs are the substance. */
+  grid-template-columns: 2fr 3fr;
   align-items: stretch;
-  min-height: 640px;
+  min-height: 480px;
 }
 
 .sg-about__photo {
   width: 100%;
-  min-height: 560px;
+  min-height: 420px;
   background-color: var(--sg-stone);
   background-size: cover;
-  background-position: center;
-  /* Drop a portrait of the team into public/about.jpg to enable: */
-  /* background-image: url("/about.jpg"); */
+  background-position: center bottom;
 }
 
 .sg-about__copy-col {
-  max-width: 560px;
-  padding: clamp(64px, 8vw, 120px) clamp(40px, 6vw, 96px);
+  max-width: 720px;
+  padding: clamp(40px, 5vw, 72px) clamp(40px, 6vw, 96px);
   align-self: center;
 }
 
@@ -35,18 +35,18 @@
 
 .sg-about__head {
   font-family: var(--sg-font-head);
-  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--sg-on-dark);
-  margin: 0 0 var(--sg-space-6);
+  margin: 0 0 var(--sg-space-3);
   text-transform: none;
 }
 
 .sg-about__paragraphs {
   font-family: var(--sg-font-body);
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.86);
 }
