@@ -60,7 +60,6 @@ function Footer() {
         <p className="sg-footer__legal">
           © {year} {companyName} · Org.nr {orgNumber}
         </p>
-        <p className="sg-footer__legal">F-skatt · Försäkrad hos Trygg-Hansa</p>
       </div>
     </footer>
   );
