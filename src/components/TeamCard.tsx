@@ -18,8 +18,8 @@ function TeamCard({ member }: TeamCardProps) {
         aria-hidden="true"
       />
       <div className="sg-teammate__body">
-        <h3 className="sg-teammate__name">{member.name}</h3>
         <p className="sg-teammate__role">{member.role}</p>
+        <h3 className="sg-teammate__name">{member.name}</h3>
         {member.email && (
           <a className="sg-teammate__email" href={`mailto:${member.email}`}>
             <span>{member.email}</span>

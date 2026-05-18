@@ -1,9 +1,9 @@
-/* ─── MOBILE (≤720px) ──────────────────────────────────────────
+/* ─── MOBILE (≤960px) ──────────────────────────────────────────
    Single consolidated pass. Placed at the end of the import order
    so its rules override the section-specific breakpoints in the
    per-component files above without needing min-width guards on
    each one. */
-@media (max-width: 720px) {
+@media (max-width: 960px) {
   /* Nav: hide desktop links + inline CTA, reveal hamburger + drawer */
   .sg-nav__links,
   .sg-nav__cta {
@@ -34,6 +34,23 @@
   /* Hero: smaller h1, stacked full-width CTAs */
   .sg-hero {
     min-height: 540px;
+  }
+  /* Darker overlay on mobile so the title/lead stay legible against
+     the photo at small sizes where text sits closer to the image. */
+  .sg-hero__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(26, 26, 26, 0.25) 0%,
+        rgba(26, 26, 26, 0.35) 50%,
+        rgba(26, 26, 26, 0.6) 100%
+      ),
+      linear-gradient(
+        100deg,
+        rgba(26, 26, 26, 0.7) 0%,
+        rgba(26, 26, 26, 0.5) 50%,
+        rgba(26, 26, 26, 0.35) 100%
+      );
   }
   .sg-hero__inner {
     padding: var(--sg-space-5) var(--sg-space-4);

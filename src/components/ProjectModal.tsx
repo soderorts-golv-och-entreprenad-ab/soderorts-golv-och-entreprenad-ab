@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { Project } from "../types";
-import useFocusTrap from "../hooks/useFocusTrap";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -8,21 +7,20 @@ interface ProjectModalProps {
 }
 
 function ProjectModal({ project, onClose }: ProjectModalProps) {
-  const containerRef = useFocusTrap<HTMLDivElement>(project !== null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     if (!project) return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (!dialog.open) dialog.showModal();
+
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKey);
     };
-  }, [project, onClose]);
+  }, [project]);
 
   if (!project) return null;
 
@@ -30,18 +28,19 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
   const altText = `${project.title} – ${project.location}`;
 
   return (
-    <div
+    <dialog
+      ref={dialogRef}
       className="sg-modal"
-      role="dialog"
-      aria-modal="true"
       aria-label={project.title}
-      onClick={onClose}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
+      }}
     >
-      <div
-        ref={containerRef}
-        className="sg-modal__panel"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="sg-modal__panel">
         <button
           type="button"
           className="sg-modal__close"
@@ -86,7 +85,7 @@ function ProjectModal({ project, onClose }: ProjectModalProps) {
           )}
         </div>
       </div>
-    </div>
+    </dialog>
   );
 }
 

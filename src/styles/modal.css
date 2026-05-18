@@ -1,20 +1,33 @@
 /* ─── PROJECT MODAL ─────────────────────────────────────────── */
-/* Layout: the overlay is a fixed full-viewport flex container that
-   centres a fixed-height panel. The PANEL is the scroll container —
-   not the overlay — so a position: sticky close button inside the
-   panel stays visible while body content scrolls. */
+/* The <dialog> fills the viewport and acts as a flex container that
+   centres the panel. The PANEL is the scroll container — not the
+   dialog — so a position: sticky close button inside the panel stays
+   visible while body content scrolls. Clicks landing on the dialog
+   itself (i.e. the padded backdrop area around the panel) close it. */
 .sg-modal {
   position: fixed;
   inset: 0;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 6vh 24px;
+  border: 0;
+  background: transparent;
+  color: inherit;
   z-index: 100;
-  background: rgba(10, 14, 30, 0.78);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6vh 24px;
+  overflow: hidden;
   animation: sg-modal-fade 0.22s ease both;
+}
+
+.sg-modal::backdrop {
+  background: rgba(10, 14, 30, 0.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 @keyframes sg-modal-fade {

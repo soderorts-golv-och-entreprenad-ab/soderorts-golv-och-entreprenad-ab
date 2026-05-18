@@ -30,7 +30,7 @@
 }
 
 .sg-teammate__photo {
-  aspect-ratio: 4 / 4.4;
+  aspect-ratio: 4 / 5;
   background-color: var(--sg-navy);
   background-size: cover;
   background-position: center top;
@@ -40,7 +40,18 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: var(--sg-space-5) var(--sg-space-4);
+  gap: 6px;
+  padding: 20px 18px 22px;
+}
+
+.sg-teammate__role {
+  font-family: var(--sg-font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
 }
 
 .sg-teammate__name {
@@ -50,27 +61,19 @@
   line-height: 1.15;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.sg-teammate__role {
-  font-family: var(--sg-font-body);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--sg-on-dark);
-  margin-bottom: 18px;
+  margin: 0;
 }
 
 .sg-teammate__email {
+  display: inline-block;
   align-self: flex-start;
-  margin-top: auto;
-  padding-top: 12px;
+  margin-top: 12px;
   font-family: var(--sg-font-body);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
-  color: var(--sg-on-dark-mute);
+  color: var(--sg-on-dark);
+  text-decoration: none;
+  word-break: normal;
   overflow-wrap: anywhere;
   transition: color var(--sg-dur-fast) var(--sg-ease);
 }
@@ -79,10 +82,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   padding-bottom: 1px;
   transition: border-color var(--sg-dur-fast) var(--sg-ease);
-}
-
-.sg-teammate__email:hover {
-  color: var(--sg-on-dark);
 }
 
 .sg-teammate__email:hover span {

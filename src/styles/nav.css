@@ -7,17 +7,6 @@
   display: flex;
   align-items: center;
   color: var(--sg-on-dark);
-  background: linear-gradient(
-    180deg,
-    rgba(26, 26, 26, 0.65) 0%,
-    rgba(26, 26, 26, 0) 100%
-  );
-  transition:
-    background-color var(--sg-dur) var(--sg-ease),
-    backdrop-filter var(--sg-dur) var(--sg-ease);
-}
-
-.sg-nav--scrolled {
   background: var(--sg-navy-translucent);
   backdrop-filter: saturate(140%) blur(8px);
   -webkit-backdrop-filter: saturate(140%) blur(8px);
@@ -151,14 +140,18 @@
   animation: sg-drawer-fade var(--sg-dur) var(--sg-ease) both;
 }
 
+/* Opacity-only — a `transform` on a `position: fixed` element re-anchors
+   it from the viewport to its containing block on iOS Safari (the spec
+   treats the transformed element as its own containing block). With
+   `animation-fill-mode: both`, the `to` state's `translateY(0)` stays
+   applied permanently after the animation, so even a no-op transform
+   breaks fixed positioning whenever the page is scrolled. */
 @keyframes sg-drawer-fade {
   from {
     opacity: 0;
-    transform: translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
