@@ -1,9 +1,9 @@
-/* ─── MOBILE (≤960px) ──────────────────────────────────────────
+/* ─── MOBILE (≤970px) ──────────────────────────────────────────
    Single consolidated pass. Placed at the end of the import order
    so its rules override the section-specific breakpoints in the
    per-component files above without needing min-width guards on
    each one. */
-@media (max-width: 960px) {
+@media (max-width: 970px) {
   /* Nav: hide desktop links + inline CTA, reveal hamburger + drawer */
   .sg-nav__links,
   .sg-nav__cta {
@@ -59,14 +59,16 @@
     font-size: 2.375rem;
     letter-spacing: 0.005em;
     margin-bottom: var(--sg-space-3);
+    /* Force the title onto two lines across the whole mobile range.
+       Without this cap, viewport widths 740–970px have enough room
+       to keep the claim on a single line. */
+    max-width: 14em;
   }
   .sg-hero__lead {
     font-size: 0.90625rem;
     margin-bottom: var(--sg-space-4);
   }
   .sg-hero__ctas {
-    flex-direction: column;
-    align-items: stretch;
     gap: 10px;
   }
   .sg-hero__ctas .sg-btn {
@@ -175,5 +177,15 @@
     padding: var(--sg-space-3) var(--sg-space-4);
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ─── NARROW MOBILE (≤587px) ───────────────────────────────────
+   Below this width the hero CTAs no longer fit side-by-side and
+   stack full-width for tap-target legibility. */
+@media (max-width: 587px) {
+  .sg-hero__ctas {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
