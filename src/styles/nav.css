@@ -114,30 +114,57 @@
     opacity var(--sg-dur-fast) var(--sg-ease);
 }
 
-.sg-nav--menu-open .sg-nav__menu-btn span:nth-child(1) {
+.sg-nav__menu-btn--close span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
 
-.sg-nav--menu-open .sg-nav__menu-btn span:nth-child(2) {
+.sg-nav__menu-btn--close span:nth-child(2) {
   opacity: 0;
 }
 
-.sg-nav--menu-open .sg-nav__menu-btn span:nth-child(3) {
+.sg-nav__menu-btn--close span:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
+/* Mobile drawer — a native <dialog> opened with showModal(). The
+   browser handles focus trap, focus restoration, Escape (via the
+   cancel event), and inertizing the rest of the page. Because the
+   nav becomes inert, the X close button lives inside the drawer at
+   the same screen position the hamburger occupied. */
 .sg-nav__drawer {
-  display: none;
   position: fixed;
-  inset: var(--sg-nav-height) 0 0 0;
+  inset: 0;
+  /* UA defaults to override: width/height fit-content, a solid
+     border, max-width/height caps, margin: auto. */
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  padding: calc(var(--sg-nav-height) + var(--sg-space-7)) var(--sg-gutter)
+    var(--sg-space-7);
   background: var(--sg-navy);
   color: var(--sg-on-dark);
   flex-direction: column;
   gap: var(--sg-space-6);
-  padding: var(--sg-space-7) var(--sg-gutter) var(--sg-space-7);
-  z-index: 40;
   overflow-y: auto;
   animation: sg-drawer-fade var(--sg-dur) var(--sg-ease) both;
+}
+
+.sg-nav__drawer[open] {
+  display: flex;
+}
+
+.sg-nav__drawer::backdrop {
+  background: transparent;
+}
+
+.sg-nav__drawer .sg-nav__menu-btn--close {
+  display: inline-flex;
+  position: absolute;
+  top: calc((var(--sg-nav-height) - 40px) / 2);
+  right: var(--sg-gutter);
 }
 
 /* Opacity-only — a `transform` on a `position: fixed` element re-anchors
