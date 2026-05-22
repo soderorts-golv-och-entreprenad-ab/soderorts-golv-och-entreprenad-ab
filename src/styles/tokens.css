@@ -5,7 +5,6 @@
   --sg-navy-translucent: rgba(26, 26, 26, 0.92);
   --sg-blue: #1a1a1a;
   --sg-paper: #ffffff;
-  --sg-bone: #f2f2f2;
   --sg-stone: #e6e6e6;
   --sg-mist: #ededed;
   --sg-ink: #1a1a1a;
@@ -40,7 +39,6 @@
   --sg-space-5: 32px;
   --sg-space-6: 48px;
   --sg-space-7: 64px;
-  --sg-space-8: 96px;
 
   --sg-dur-fast: 140ms;
   --sg-dur: 240ms;
